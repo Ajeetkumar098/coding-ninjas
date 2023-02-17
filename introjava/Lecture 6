@@ -1,0 +1,381 @@
+****************************************************************************************************************************
+Question: Code : Mirror Image Number Pattern 
+
+import java.util.*;
+public class Solution
+ {
+	public static void main(String[] args) {
+
+          Scanner s = new Scanner(System.in);
+       int N = s.nextInt();
+       int i = 1;
+       
+       while( i<=N )
+	   {
+           int Start = 1;
+           int j =1;
+           while( j <= N - i ){
+               System.out.print(" ");
+             j++;
+           }
+           while(j<=N){
+               System.out.print(Start);
+               Start++;
+               j++;
+           }
+           System.out.println();
+           i++;
+       }
+		
+	}
+
+}
+
+Output:
+6
+     1
+    12
+   123
+  1234
+ 12345
+123456
+
+
+********************************************************************************************************************************
+
+Question:Inverted No pattern
+
+import java.util.Scanner;
+
+public class Solution
+ {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int i = 1;
+       while(i <= N){
+           int j = N-i+1;
+           int k= j;
+           while(j >0 ){
+               System.out.print(k);
+               j--;
+           }
+           System.out.println();
+           i++;
+       }
+    }
+ }
+
+
+Output: 6
+666666
+55555
+4444
+333
+22
+1
+
+******************************************************************************************************************************
+Question:Code Star Pattern
+
+import java.util.Scanner;
+
+public class Solution
+{
+	public static void main(String args[])   
+   {    
+ 			Scanner s=new Scanner(System.in);
+ 			int N=s.nextInt();
+
+	int P = N - 1;  
+			for (int j = 1; j<= N; j++)  
+					{  
+							for(int i = 1; i<=P; i++)  
+								{  
+									System.out.print(" ");  
+								}  
+	P--;  
+			for (int i = 1; i <= 2 * j - 1; i++)  
+					{  
+							System.out.print("*");  
+					}  
+							System.out.println("");  
+					}  
+   }
+}
+
+Output: 6
+     *
+    ***
+   *****
+  *******
+ *********
+***********
+
+******************************************************************************************************************************
+
+Question:Triangle of Numbers
+
+import java.util.Scanner;
+
+public class Solution
+{
+	public static void main(String args[])   
+   {    
+ 			Scanner s=new Scanner(System.in);
+ 			int n=s.nextInt();
+
+int space = n - 1;
+for ( int d = 1 ; d <= n ; d++ )
+{
+int num = d;
+for ( int c = 1 ; c <= space ; c++ )
+System.out.print(" ");
+space--;
+for (int  c = 1 ; c <= d ; c++ )
+{
+System.out.print(num);
+num++;
+}
+num--;
+num--;
+for (int  c = 1 ; c < d ; c++)
+{
+System.out.print(num);
+num--;
+}
+System.out.print("\n");
+}
+
+}
+}
+
+
+Output:5
+    1
+   232
+  34543
+ 4567654
+567898765
+
+********************************************************************************************************************************
+
+Question:Diamond of Stars
+
+
+	import java.util.Scanner;
+public class Solution {
+   public static void main(String[] args)
+   {
+      int N, i, j, space, decider;
+      Scanner s=new Scanner(System.in);
+ 			 N=s.nextInt();
+      
+      decider = N/2;
+      
+      for(i=0; i<N; i++)
+      {
+         if(i<=decider)
+         {
+            for(space=i; space<decider; space++)
+               System.out.print(" ");
+            for(j=0; j<(i*2)+1; j++)
+               System.out.print("*");
+            System.out.println();
+         }
+         else
+         {
+            for(space=i; space>decider; space--)
+               System.out.print(" ");
+            for(j=(N*2)-1; j>(i*2); j--)
+               System.out.print("*");
+            System.out.print("\n");
+         }
+      }
+   }
+}
+
+Output: 6
+   *
+  ***
+ *****
+*******
+ ***
+  *
+  
+*******************************************************************************************************************************
+                                                       ASSIGNMENT
+*******************************************************************************************************************************
+Question: Half Diamond Pattern
+
+
+import java.util.Scanner;
+
+public class Solution {
+    public static void main(String[] args) {
+        int i, j, N;
+        
+        Scanner s = new Scanner(System.in);
+        N = s.nextInt();
+        System.out.println("*");
+        {
+
+        
+        for (i = 1; i <= N; i++) {
+            System.out.print("*");
+            for (j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+
+            for (j = i - 1; j >= 1; j--) {
+                System.out.print(j);
+            }
+            System.out.print("*");
+
+            System.out.println();
+        }
+
+        // Print the lower half of the pattern
+        for (i = N - 1; i >= 1; i--) {
+            System.out.print("*");
+            for (j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+
+            for (j = i - 1; j >= 1; j--) {
+                System.out.print(j);
+            }
+            System.out.print("*");
+
+            System.out.print("\n");
+        }
+        System.out.print("*");
+    }
+}
+}
+
+Output:5
+*
+*1*
+*121*
+*12321*
+*1234321*
+*123454321*
+*1234321*
+*12321*
+*121*
+*1*
+*
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+Question:Parallelogram Pattern
+
+
+//Parallelogram Pattern
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j < i; j++) {
+				System.out.print(" ");
+			}
+			for (int r = 1; r <= N; r++) {
+				System.out.print("*");
+			}
+			System.out.print("\n");
+		}
+
+	}
+}
+
+Output:6
+******
+ ******
+  ******
+   ******
+    ******
+     ******
+     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     
+Question: Sum Pattern
+
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+Scanner s=new Scanner(System.in);
+        int p=s.nextInt();
+
+        for (int i=1;i<=p;i++) {
+            int N=2;
+            System.out.print(1);
+            for (int k=1;k<i;k++){
+                System.out.print("+"+N);
+                N++;
+            }
+
+            int sum = (i * i + i) / 2;
+            System.out.println("="+sum);
+        }
+	}
+}
+
+Output: 6
+1=1
+1+2=3
+1+2+3=6
+1+2+3+4=10
+1+2+3+4+5=15
+1+2+3+4+5+6=21
+
+
+************************************************************************************************************************
+Question:Odd Square
+
+import java.util.Scanner;
+
+public class Main 
+{
+    public static void main(String[] args) {
+        int i, j, N;
+        Scanner s = new Scanner(System.in);
+        N = s.nextInt();
+    
+        {
+		for (i = 1; i <= N; i++) 
+		{
+			for (j = i - 1; j < N; j++ ) 
+			{
+				System.out.print(j * 2 + 1 + "");
+			}
+			for(int k = 0; k < i - 1; k++) 
+			{
+				System.out.print(k * 2 + 1 + "");
+			}
+			System.out.println();
+		}
+	}
+}
+}
+
+
+Output:6
+1357911
+3579111
+5791113
+7911135
+9111357
+1113579
+
+
+***************************************************************************************************************************
+                        Best of Luck >>>>>>>>> End of Lecture 6>>>>>>>>>> Best of Luck
+***************************************************************************************************************************

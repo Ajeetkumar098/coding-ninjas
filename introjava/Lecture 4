@@ -1,0 +1,191 @@
+ Find character case:
+ 
+ import java.util.*;          // additional import 
+public class Solution {
+    
+    public static void main(String[] args)
+     {
+        Scanner s=new Scanner(System.in);
+        char c=s.next(). charAt(0);
+         if(c>='a' && c<='z')               // 'a'- character , "ankit"-string
+         {
+             System.out.println("0");
+         }
+         else if (c >= 'A' && c <= 'Z') 
+         {
+             System.out.println("1");
+         }
+        else  {
+             System.out.println("-1");    // Except to other alphabetic character
+         }
+
+    }
+}
+
+
+Question:- Fahrenheit to Celsius Table
+
+
+
+
+import java.util.Scanner;
+
+public class Solution
+{
+	public static void main(String[] args) {
+		
+		Scanner s= new Scanner(System.in);
+		
+		int S = s.nextInt(); // starting  point of Fahrenheit
+		int E = s.nextInt(); // ending point of Fahrenheit
+		int W = s.nextInt(); // step size
+		int c;
+
+		// According to question :-Fahrenheit Value (S) , End Fahrenheit value (E) ,Step Size (W),
+		while (S<=E)
+		 {
+			c = 5 * (S-32)/9;
+			System.out.print(S);
+			System.out.print(" ");
+			System.out.println(c);
+			S=S+W;
+		}
+		return;
+	}
+}
+
+
+Question:- Total Salary 
+
+import java.util.Scanner;
+import java.lang.Math;
+public class Main {
+	
+	public static void main(String[] args) 
+	{
+		Scanner s = new Scanner(System.in);
+		int basic_salary = s.nextInt();          //Basic salary & Grade (separated by space)
+		String str = s.next();
+		char c = str.charAt(0);    
+		int all;
+		if (c == 65)
+		 {
+			all = 1700;
+		} else if (c == 66) 
+		{
+			all = 1500;
+		} else {
+			all = 1300;
+		}
+		double hra= (0.20* basic_salary);
+		double da=(0.50*basic_salary);
+		double pf= (0.11* basic_salary);
+		double total_salary= ((basic_salary+hra+da+all)-pf);
+		double New=Math.round(total_salary);   // new means arounding total salary 
+		int f=(int)(New);                // f means final salary
+		System.out.println(f);
+	}
+}
+
+
+
+Question :- Multiplication Table
+
+import java.util.*;
+public class Main
+ {	
+	public static void main(String[] args) 
+	{
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+	    for(int i=1;i<=10;i++)
+		{
+			System.out.println(n*i);
+		}
+
+	}
+}
+
+
+Question: Sum of even and odd
+
+
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();         // n= number, digit = separting to digit (eg:- 675= 6,7,5)
+		int digit;
+		int even = 0, odd = 0;
+		while (n > 0)
+		 {
+			digit = n % 10;       // 125%10 =12 (quotient)
+			n = n / 10;         // 12/10=2 (Remainder)
+			if (digit % 2 != 0)
+				odd = odd + digit;
+			else
+				even = even + digit;
+		}
+		System.out.print(even + " " + odd);
+	}
+}
+
+
+Question: Factors
+
+import java.util.*;
+public class Solution 
+{
+    public static void main(String[] args)
+     {
+         Scanner s=new Scanner(System.in);
+         int n=s.nextInt();
+         for(int i=2; i<=n-1;i++)
+         {
+             if(n%i==0)
+             {
+                 System.out.print(i +" ");
+             }
+         }
+     }
+}
+
+Question: Find power of Number
+
+import java.util.*;
+public class Solution {
+    
+    public static void main(String[] args) 
+    {
+        Scanner s= new Scanner(System.in);
+        int n= s.nextInt();    //  x ^ n means 2^4 
+        int x=s.nextInt();
+        int p=1; 
+        for(int i=1;i<=x;i++)
+        {
+            p=p*n;
+        }
+        System.out.println(p);
+    }
+}
+
+
+Confusing question:
+
+
+public class Main {
+    public static void main(String[] args) {
+    int a = 10;
+    while(a > 5) {
+        int b = 1;
+        System.out.print(b + " ");
+        a--;
+    }
+    }
+}
+
+Output:- 1 1 1 1 1
+
+Explanation:- The while loop will be executed 5 times, starting from when a=10 till it become a=6/. Each time the variable b since it is inside the while, would be initialized by 1, so the output will be 1 1 1 1 1 
+

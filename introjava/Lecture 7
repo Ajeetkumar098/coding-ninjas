@@ -1,0 +1,304 @@
+*******************************************************************************************************************************
+Question: Nth Fibonacci Number
+*******************************************************************************************************************************
+import java.util.Scanner;
+public class Solution {
+
+    static int fib(int N) 
+    { 
+    if (N <= 1) 
+       return N; 
+    return fib(N-1) + fib(N-2); 
+    } 
+
+    public static void main (String args[]) 
+    { 
+         Scanner s=new Scanner(System.in);
+          int N=s.nextInt();              // F(n) = F(n-1) + F(n-2),
+   		System.out.println(fib(N)); // Where, F(1) =  1, 
+         										//  F(2) = 1
+    } 
+	}
+
+Output: 8
+21
+
+*****************************************************************************************************************************
+Question:- All Prime Number
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+        int N=s.nextInt();
+        for(int i=2 ;i<=N;i++)
+        {
+            int counting =0;
+            for(int j=2;j<=i;j++)
+            {
+                if(i%j==0)
+                counting ++;
+            }
+            if(counting==1)
+                System.out.println(i);
+        }
+	}
+}
+
+
+Output: 10
+2
+3
+5
+7
+
+******************************************************************************************************************************
+                                                Assignment
+******************************************************************************************************************************
+Question:Sum or Product
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args)
+	 {
+        Scanner s=new Scanner(System.in);
+            int N=s.nextInt();
+            int C=s.nextInt();
+        if(C==1)         // Choice 1= sum
+        {
+            int sum=0;
+            for(int i=1;i<=N;i++)
+            {
+                sum=sum+i;
+            }
+            System.out.print(sum);
+        }
+       else if(C==2)   // choice 2= multiple
+        {
+            int multiple=1;
+            for(int i=1;i<=N;i++)
+            {
+                multiple=multiple*i;
+            }
+            System.out.print(multiple);
+            
+	}
+        else
+            System.out.print("-1");
+}
+}
+
+
+Output: 10  //Line 1 : Integer N
+         1     Line 2 : Choice C
+         
+         
+Result: 55
+
+******************************************************************************************************************************
+Question: Term of AP
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// Write your code here
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int i, res;
+		int no = 1, count = 0;
+		while (count < N)
+		 { 
+			res = 3 * no + 2;
+			if (res % 4 != 0) 
+			{
+				System.out.print(res + " ");
+				count++;
+			}
+			no++;
+		}
+	}
+}
+
+Output:12
+
+5 11 14 17 23 26 29 35 38 41 47 50 
+< res = 3 * no + 2; >
+
+******************************************************************************************************************************
+Question: Reverse Of a Number
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+public class Main {
+    public static void main (String[] args)  
+    { 
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        
+
+	 { 
+        int rn = 0; 
+        while(n > 0) 
+        { 
+            rn = rn * 10 + n% 10; 
+            n = n/ 10; 
+        } 
+       
+		System.out.println(rn); 
+    } 
+    }
+    
+
+	}
+ Output: 125844
+ 
+ Result: 448521
+ 
+*******************************************************************************************************************************
+Question: Binary To decimal
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int placeValue = 1;
+		int decimal = 0;
+		while (N != 0) {
+			int rem = N % 10;
+			decimal = decimal + (rem * placeValue);
+			N = N / 10;
+			placeValue = placeValue * 2;
+		}
+		System.out.println(decimal);
+
+	}
+}
+
+Output:10000
+Result: 16
+
+ 
+*******************************************************************************************************************************
+Question:Decimal  To  Binary
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int N=s.nextInt();
+        long binary=0;
+        long prerev=0;
+        long placeValue=1;
+        while(N!=0)
+        {
+            int remainder=N%2;
+            binary=binary+remainder*placeValue;
+            N=N/2;
+            placeValue*=10;
+        }
+
+        System.out.println(binary);
+    }
+}
+
+Output: 25
+Result: 11001
+
+
+*******************************************************************************************************************************
+Question: Square Root Integral 
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+public class Main {
+	
+	public static void main(String[] args) {
+        Scanner s=new Scanner(System.in);
+        int N= s.nextInt();
+        System.out.println((int)Math.pow(N,0.5));
+
+	}
+}
+
+Output:144
+Result : 12
+
+*******************************************************************************************************************************
+Question: Check Number sequence
+*******************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int n=s.nextInt();
+		int pre=s.nextInt();
+		int i=1;
+		boolean isDec=true;
+		int count=0;
+		while(i<=n-1) {
+			int curr=s.nextInt();
+			if(pre==curr) {
+				System.out.println(false);
+				return ;
+			}
+			else if(pre<curr) {
+				if(isDec) {
+					count++;
+					isDec=false;
+				}
+				
+			}else {
+				if(!isDec) {
+					System.out.println(false);
+					return ;
+				}
+				
+				
+			}
+			i++;
+			pre=curr;
+		}
+		if(count==1&&isDec==false || count==0 && isDec==true || count==0 && isDec==false) {
+			System.out.println(true);
+		}else {
+			System.out.println(false);
+		}
+
+	}
+
+}
+
+Output:
+5
+9
+8
+4
+5
+6
+
+Result: true
+
+
+*******************************************************************************************************************************
+
+
+
+
+
+

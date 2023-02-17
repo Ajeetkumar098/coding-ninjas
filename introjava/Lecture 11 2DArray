@@ -1,0 +1,192 @@
+***************************************************************************************************************************
+Row wise sum
+***************************************************************************************************************************
+public class Solution {
+
+	public static void rowWiseSum(int[][] mat) {
+		//Your code goes here
+		for( int  i = 0; i < mat.length; i++)
+		{
+			int sum = 0 ;
+			for(int j = 0 ; j<mat[0].length; j++)
+			
+			{
+				sum= sum+ mat[i][j];
+			}
+			System.out.print(sum+ " ");
+		}
+	}
+}
+
+***************************************************************************************************************************
+Largest row or column
+***************************************************************************************************************************
+public class Solution {
+
+	public static void findLargest(int mat[][]) {
+		// Your code goes here
+		if (mat.length == 0) {
+			System.out.print("row " + 0 + " " + Integer.MIN_VALUE);
+			return;
+
+		}
+		int r = 0;
+		int sr = Integer.MIN_VALUE;
+		for (int i = 0; i < mat.length; i++) {
+			int sum = 0;
+			for (int j = 0; j < mat[0].length; j++) {
+				sum += mat[i][j];
+			}
+			if (sr < sum) {
+				sr = sum;
+				r = i;
+			}
+		}
+		int c = 0;
+		int cr = Integer.MIN_VALUE;
+		for (int i = 0; i < mat[0].length; i++) {
+			int sum = 0;
+			for (int j = 0; j < mat.length; j++) {
+				sum += mat[j][i];
+			}
+			if (cr < sum) {
+				cr = sum;
+				c = i;
+			}
+		}
+		if (cr > sr) {
+			System.out.print("column " + c + " " + cr);
+		} else {
+			System.out.print("row " + r + " " + sr);
+		}
+	}
+
+}
+***************************************************************************************************************************
+***************************************************************************************************************************
+Assignment
+***************************************************************************************************************************
+***************************************************************************************************************************
+Total Sum on the Boundaries and Diagonals
+***************************************************************************************************************************
+public class Solution {
+
+	public static void totalSum(int[][] mat) {
+		// Your code goes here
+		int sum = 0;
+		for (int i = 0; i < mat.length; i++) {
+			sum += mat[i][0];
+			sum += mat[0][i];
+			sum += mat[mat.length - 1][i];
+			sum += mat[i][mat.length - 1];
+		}
+		for (int i = 1; i < mat.length - 1; i++) {
+			for (int j = 1; j < mat.length - 1; j++) {
+				if (i == j) {
+					sum += mat[i][j];
+				} else if (i == mat.length - 1 - j) {
+					sum += mat[i][j];
+				}
+			}
+		}
+		if (mat.length != 0) {
+			System.out.print(sum - mat[0][0] - mat[0][mat.length - 1] - mat[mat.length - 1][mat.length - 1]
+					- mat[mat.length - 1][0]);
+
+		} else {
+			System.out.print(0);
+		}
+	}
+
+}
+
+***************************************************************************************************************************
+Print like a wave
+***************************************************************************************************************************
+public class Solution {
+
+	public static void wavePrint(int mat[][]) {
+		// Your code goes here
+		if (mat.length == 0) {
+			return;
+		}
+		int i = 0;
+		int j = 0;
+		while (i < mat[0].length) {
+			if (j == 0) {
+				while (j < mat.length) {
+					System.out.print(mat[j][i] + " ");
+					++j;
+				}
+
+			}
+			// i++;
+
+			else if (j == mat.length) {
+				while (j - 1 >= 0) {
+					System.out.print(mat[j - 1][i] + " ");
+					--j;
+				}
+
+			}
+			i++;
+			// System.out.print(i);
+		}
+
+	}
+
+}
+***************************************************************************************************************************
+Print spiral
+***************************************************************************************************************************
+public class Solution {
+
+	public static void spiralPrint(int mat[][]) {
+		// Your code goes here
+		if (mat.length == 0) {
+			return;
+		}
+		int minr = 0;
+		int maxr = mat.length - 1;
+		int minc = 0;
+		int maxc = mat[0].length - 1;
+		int cnt = 0;
+		int tt = (maxc + 1) * (maxr + 1);
+		while (cnt < tt) {
+			int i = minr;
+			int j = minc;
+			int m = maxr;
+			int n = maxc;
+			while (j <= maxc && cnt < tt) {
+				System.out.print(mat[minr][j] + " ");
+				j++;
+				cnt++;
+			}
+			i++;
+			while (i <= maxr && cnt < tt) {
+				System.out.print(mat[i][maxc] + " ");
+				i++;
+				cnt++;
+			}
+			n--;
+
+			while (n >= minc && cnt < tt) {
+				System.out.print(mat[maxr][n] + " ");
+				n--;
+				cnt++;
+			}
+			m--;
+			while (m > minr && cnt < tt) {
+				System.out.print(mat[m][minc] + " ");
+				m--;
+				cnt++;
+			}
+			minr++;
+			minc++;
+			maxr--;
+			maxc--;
+		}
+	}
+}
+
+****************************************************************************************************************************

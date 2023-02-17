@@ -1,0 +1,249 @@
+
+
+******************************************************************************************************************************
+Array intersection
+******************************************************************************************************************************
+import java.util.*;
+
+public class Solution {
+
+	public static void intersection(int[] arr1, int[] arr2) {
+		// Your code goes here
+		Arrays.sort(arr1);
+		Arrays.sort(arr2);
+		int p = 0;
+		int q = 0;
+		while (p < arr1.length && q< arr2.length) {
+			if (arr1[p] == arr2[q]) {
+				System.out.print(arr1[p] + " ");
+				p++;
+				q++;
+			} else if (arr1[p] < arr2[q]) {
+				p++;
+			} else {
+				q++;
+			}
+		}
+	}
+
+}
+
+
+******************************************************************************************************************************
+/* 1= test case
+ 2 as N integer in first array
+given array integer
+3 as N integer in second array
+given array integer
+then output is intersection of row( aUb)
+*/
+
+
+******************************************************************************************************************************
+ArrayEquilibriumIndex
+******************************************************************************************************************************
+public class Solution {
+
+	public static int arrayEquilibriumIndex(int[] arr) {
+		// Your code goes here
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		int lsum = 0;
+		for (int i = 0; i < arr.length; i++) {
+
+			lsum += arr[i];
+			if (lsum < sum) {
+				sum -= arr[i];
+			} else if (lsum == sum) {
+				return i;
+			} else {
+				return -1;
+			}
+		}
+		return -1;
+	}
+}
+******************************************************************************************************************************
+******************************************************************************************************************************
+Assignment
+******************************************************************************************************************************
+Find the Unique Element
+******************************************************************************************************************************
+public class Solution {
+
+	public static int findUnique(int[] arr) {
+		//Your code goes here
+		int result 	= arr[0];
+		for(int i =1; i<arr.length; i++){
+			result = result^arr[i];
+		}
+		return result;
+	}
+}
+
+******************************************************************************************************************************
+Output::1 // Test  case
+7 // Indexing
+2 3 1 6 3 6 2 // given array using user
+Result::1 // unique element
+
+
+******************************************************************************************************************************
+Duplicate Array
+******************************************************************************************************************************
+
+import java.util.*;
+public class Solution {
+
+	public static int findDuplicate(int[] arr) {
+		//Your code goes here
+		HashMap<Integer, Integer> mp = new HashMap<>();
+		for(int i = 0 ; i<arr.length; i++){
+			if (mp.containsKey(arr[i])){
+				return arr[i];
+			}
+			else{
+				mp.put(arr[i], 1);
+			}
+		}
+		return -1;
+	}
+}
+
+******************************************************************************************************************************
+Pair sum in array
+******************************************************************************************************************************
+
+		public class Solution {  
+
+    public static int pairSum(int arr[], int x) {
+    	//Your code goes here
+        int M=arr.length;
+        int sum = 0;
+        
+        for(int i = 0; i<M; i++)
+        {
+            for(int j = i+1; j<M; j++)
+            {
+                if(arr[i] + arr[j] == x)
+                {
+                    sum+=1;
+                }
+            }
+        }
+        return sum;
+    
+	}
+		}
+/* sum of array =Result :-  pair(counting)*/
+
+
+******************************************************************************************************************************
+Triplet Sum
+******************************************************************************************************************************
+
+import java.util.*;
+
+public class Solution {
+
+	public static int pairSum(int[] arr, int startIndex, int endIndex, int num) {
+		int numPair = 0;
+
+		while (startIndex < endIndex) {
+
+			if (arr[startIndex] + arr[endIndex] < num) {
+				startIndex++;
+			} else if (arr[startIndex] + arr[endIndex] > num) {
+				endIndex--;
+			} else {
+				int elementAtStart = arr[startIndex];
+				int elementAtEnd = arr[endIndex];
+
+				if (elementAtStart == elementAtEnd) {
+					int totalElementFromStartToEnd = (endIndex - startIndex) + 1;
+					numPair += (totalElementFromStartToEnd * (totalElementFromStartToEnd - 1) / 2);
+
+					return numPair;
+				}
+				int tempStartIndex = startIndex + 1;
+				int tempEndIndex = endIndex - 1;
+
+				while (tempStartIndex <= tempEndIndex && arr[tempStartIndex] == elementAtStart) {
+					tempStartIndex++;
+				}
+				while (tempEndIndex >= tempStartIndex && arr[tempEndIndex] == elementAtEnd) {
+					tempEndIndex--;
+				}
+
+				int totalElementFromStart = tempStartIndex - startIndex;
+				int totalElementFromEnd = (endIndex - tempEndIndex);
+
+				numPair += (totalElementFromStart * totalElementFromEnd);
+
+				startIndex = tempStartIndex;
+				endIndex = tempEndIndex;
+			}
+		}
+		return numPair;
+	}
+
+	public static long tripletSum(int[] arr, int num) {
+		Arrays.sort(arr);
+		int n = arr.length;
+
+		long numTriplets = 0;
+
+		for (int i = 0; i < n; i++) {
+			int pairSumFor = num - arr[i];
+			long numPairs = pairSum(arr, (i + 1), (n - 1), pairSumFor);
+
+			numTriplets += numPairs;
+		}
+		return numTriplets;
+		
+	}
+}
+
+******************************************************************************************************************************
+Output::1
+7
+1 2 3 4 5 6 7 
+12
+Result : 5 // 5 times three digit sum is equal to 12.
+
+******************************************************************************************************************************
+Rotate Array
+******************************************************************************************************************************
+public class Solution {
+    static void rev(int arr[], int l, int h) {
+        while (l < h) {
+            int temp = arr[l];
+            arr[l] = arr[h];
+            arr[h] = temp;
+            l++;
+            h--;
+        }
+    }
+
+    public static void rotate(int[] arr, int d) {
+        // Your code goes here
+        if (d > arr.length) {
+            d = arr.length % d;
+        }
+        rev(arr, 0, d - 1);
+        rev(arr, d, arr.length - 1);
+        rev(arr, 0, arr.length - 1);
+    }
+
+}
+
+******************************************************************************************************************************
+Output::7
+1 2 3 4 5 6 7
+2
+Result:
+3 4 5 6 7 1 2 // means after digit 2 to consecutive then other digit that shows on result.
+******************************************************************************************************************************
+

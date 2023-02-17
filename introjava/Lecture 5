@@ -1,0 +1,243 @@
+Code: Square Pattern
+
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= N; j++) {
+				System.out.print(N);
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+ Output: 5
+ Your Output
+55555
+55555
+55555
+55555
+55555
+
+**********************************************************************************************************************
+
+Code: Triangular Star Pattern
+
+import java.util.Scanner;
+public class Solution {
+
+
+	public static void main(String[] args) 
+	{
+		Scanner s= new Scanner(System.in);
+		int N=s.nextInt();
+		for(int i=1; i<=N;i++)
+		{
+			for(int j=1; j<=i;j++)
+			{
+				System.out.print("*");
+			}
+			System.out.println();
+		}
+
+		
+	}
+
+}
+
+ Output:- 6
+ *
+**
+***
+****
+*****
+******
+
+
+
+**********************************************************************************************************************
+
+
+
+Code: Triangular Number Pattern
+
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		for (int i = 1; i <= N; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.print(i);
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+Output: 7
+1
+22
+333
+4444
+55555
+666666
+7777777
+
+
+**********************************************************************************************************************
+
+
+Code: Reverse Number Pattern
+
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		for (int i = 1; i <= N; i++) {
+			for (int j = i; j >=1; j--) {
+				System.out.print(j);
+			}
+			System.out.println();
+		}
+
+	}
+
+}
+
+
+Output: 6
+1
+21
+321
+4321
+54321
+654321
+
+
+**********************************************************************************************************************
+
+
+Code: Alpha Pattern
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		int K=65;           // 65 - A
+		for (int i = 1; i <= N; i++) 
+		{
+			for (int j = 1; j <= i; j++) 
+			{
+				System.out.print((char)K);
+			}
+			System.out.println( );
+			K++;
+		}
+
+	}
+
+}
+
+Output:- 7
+A
+BB
+CCC
+DDDD
+EEEEE
+FFFFFF
+GGGGGGG
+
+*********************************************************************************************************************
+
+
+Code: Character Pattern
+
+import java.io.*;
+import java.util.Scanner;
+public class Solution {
+
+
+	public static void main(String[] args) {
+		
+		Scanner s=new Scanner(System.in);
+		int N=s.nextInt();
+		for(int i=1;i<=N;i++)
+		{
+			int k=i;
+
+			for(int j=1; j<=i;j++,k++)
+			{
+				System.out.print( (char) (k+64));
+			}
+			 System.out.println("");
+		}
+		
+	}
+
+}
+
+Output: 5
+A
+BC
+CDE
+DEFG
+EFGHI
+
+
+*********************************************************************************************************************
+
+
+Code: Interesting Alphabets
+
+import java.io.*;
+import java.util.Scanner;
+
+public class Solution {
+
+	public static void main(String[] args) {
+
+		Scanner s = new Scanner(System.in);
+		int N = s.nextInt();
+		for (int i = N; i >=1; i--) 
+		{
+		
+			for (int j = i; j<= N; j++) 
+			{
+				System.out.print((char) (j + 64));
+			}
+			System.out.println("");
+		}
+
+	}
+
+}
+
+
+Output: 5
+E
+DE
+CDE
+BCDE
+ABCDE
+
+********************************************************End of Lecture 5*********************************************************
+

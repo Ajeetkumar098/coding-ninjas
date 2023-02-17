@@ -1,0 +1,318 @@
+***************************************************************************************************************************
+Count words
+****************************************************************************************************************************
+public class Solution {
+
+	public static int countWords(String str)
+	 {	
+		//Your code goes here
+	
+		if (str.length() == 0 ) 
+		{
+			return 0; 
+		}
+		String arr[] = str.split(" ");
+		return arr.length;
+	}
+
+}
+****************************************************************************************************************************
+Output:thisisone word
+result : 2 
+
+****************************************************************************************************************************
+String Palindrome
+****************************************************************************************************************************
+public class Solution {
+
+	public static boolean isPalindrome(String str)
+	 {
+		//Your code goes here
+		int i = 0;
+		int n = str.length()-1;
+		while(i<=n){
+			if(str.charAt(i) != str.charAt(n)) // not equal to (!=)
+			{
+				return false;
+			}
+			i++;
+		n--;
+
+		}
+		return true;
+	}
+
+}
+**************************************************************************************************************************** 
+ output:: abbbbbba
+ result:: True
+ 
+
+****************************************************************************************************************************
+All Substrings
+**************************************************************************************************************************** 
+ public class Solution {
+
+	public static void printSubstrings(String str) {
+		//Your code goes here
+		for(int i = 0; i <str.length(); i++)
+		{
+			String A = "";
+			for(int j = i; j<str.length(); j++)
+			{
+				A = A + str.charAt(j);
+				System.out.println(A);
+			}
+
+		}
+	}
+
+}
+****************************************************************************************************************************
+Output::abc
+Result::
+a 
+ab 
+abc 
+b 
+bc 
+c 
+
+****************************************************************************************************************************
+Reverse String Wordwise
+****************************************************************************************************************************
+public class Solution {
+	static void rev(String arr[]){
+		int  i = 0;
+		int l = arr.length-1;
+		while(i<l){
+			String temp = new String(arr[i]);
+			arr[i] = arr[l];
+			arr[l] = temp;
+			l--;
+			i++;
+		}
+	}
+
+	public static String reverseWordWise(String input) {
+		// Write your code here
+		String arr[] = input.split(" ");
+		rev(arr);
+		String A = "";
+		for (int i = 0; i < arr.length; i++) {
+			A=A+arr[i]+" ";
+		}
+		return A;
+
+
+	}
+}
+
+****************************************************************************************************************************
+Output::Ninjas Coding to Welcome
+Result::Welcome to Coding Ninjas
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+Assignment
+****************************************************************************************************************************
+****************************************************************************************************************************
+****************************************************************************************************************************
+Check Permutation
+****************************************************************************************************************************
+public class Solution {
+
+	public static boolean isPermutation(String str1, String str2) {
+		// Your code goes
+		int arr1[] = new int[26];
+		
+		for (int i = 0; i < str1.length(); i++) {
+			int p=((int)str1.charAt(i));
+			int a = (p - 97); // only for small letter are used in example. a=96) 
+			arr1[a] += 1;
+		}
+		int arr2[] = new int[26];
+		for (int i = 0; i < str2.length(); i++) {
+			int q = ((int) str2.charAt(i));  
+			int a = (q - 97);
+			arr2[a] += 1;
+		}
+		for (int i = 0; i < 26; i++) {
+			if (arr1[i] != arr2[i]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+}
+
+****************************************************************************************************************************
+Output::abcde // 5 letter
+baedc  // 5 letter
+Result::
+true
+
+****************************************************************************************************************************
+RemoveConsecutiveDuplicates
+****************************************************************************************************************************
+public class Solution {
+
+	public static String removeConsecutiveDuplicates(String str) {
+		//Your code goes here
+	
+	char ch = str.charAt(0);
+	String s = ""+ch;
+	for(int i = 1;i<str.length();i++)
+	{
+		if (str.charAt(i) != ch) {
+			ch = str.charAt(i);
+			s += ch;
+		}
+	}return s;
+
+}
+}
+
+****************************************************************************************************************************
+Output::aabccbaa
+result::abcba // Remove 1st of a and 1st of c and 2nd of a
+
+****************************************************************************************************************************
+ ReverseEachWord
+****************************************************************************************************************************
+public class Solution {
+	static String rev(String s){
+		// l = 0;
+		int h = s.length();
+		String st = "";
+		for(int i = 0 ; i<h; i++){
+			st = s.charAt(i)+st;
+		} 
+		return st;
+	}
+
+	public static String reverseEachWord(String str) {
+		//Your code goes here
+		String a[] = str.split(" ");
+		String s = "";
+		int n=a.length;
+		for (int i  = 0 ; i<n; i++){
+			String T = rev(a[i]);
+			s+=T+" ";
+		}
+		return s;
+	}
+
+}
+
+****************************************************************************************************************************
+Output:Always indent your code
+Result:syawlA tnedni ruoy edoc
+
+****************************************************************************************************************************
+RemoveAllOccurrencesOfChar
+****************************************************************************************************************************
+public class Solution {
+
+	public static String removeAllOccurrencesOfChar(String str, char ch)
+	 {
+		// Your code goes here
+		String result = "";
+		int N=str.length();
+		for (int i = 0 ; i<N; i++){
+			if (str.charAt(i) != ch)
+			{
+				result+=str.charAt(i);
+			}
+		}
+		return result;
+
+}
+}
+****************************************************************************************************************************
+ /* output:- more alphabet char is removal
+ input:- aabccbaaa
+ remove:- a
+ result:- bccb
+ */
+ 
+**************************************************************************************************************************** 
+ Highest Occuring Character
+**************************************************************************************************************************** 
+ import java.util.*;
+
+public class Solution {
+
+	public static char highestOccuringChar(String str) {
+		// Your code goes here
+		int arr[] = new int[26];
+		int N=str.length();
+		for (int i = 0; i < N; i++)
+	    {
+			int a = ((int) str.charAt(i) - 97);  // 97 :-ascii code of a (small a)
+			// str.charAt(0)=a , ascii code a=97-97=0 then result on charAT(0) convert integer
+			arr[a] += 1;   // arr[a]=arr[a]+1 means arr[0]=a]
+		}
+		// System.out.println(Arrays.toString(arr));
+		int result = 0;
+		int g = 0;
+		for (int i = 0; i < 26; i++) {
+			if (arr[i] > g)    // if g is greater then alphabet 
+			 {
+				// System.out.println(arr[i]);
+				result = i;
+				g = arr[i];
+			}
+		}
+		return (char) (result + 97); // 0+ascii code in a 
+		// ascii code convert in character type return :-
+	}
+
+}
+
+****************************************************************************************************************************
+/* output:- this question says that which is highest letter written 
+eg:- aaaaabbbbc
+result:- a
+*/
+
+****************************************************************************************************************************
+CompressedString
+****************************************************************************************************************************
+
+		public class Solution {
+			public static String getCompressedString(String str) {
+				// Write your code here.
+				// String s = "";
+				char ch = str.charAt(0);
+				String s = "";
+				int c = 1;
+				for (int i = 1; i < str.length(); i++) {
+					if (str.charAt(i) != ch && c != 1) {
+						s += ch + Integer.toString(c);
+						ch = str.charAt(i);
+						c = 1;
+					} else if (str.charAt(i) != ch && c == 1) {
+						s += ch;
+						ch = str.charAt(i);
+						c = 1;
+					} else {
+						c++;
+					}
+				}
+				if (c == 1) {
+					return s + ch;
+				} else {
+					return s + ch + Integer.toString(c);
+				
+	}
+}
+		
+    }
+    output::
+aaabbccdsa
+Result::
+a3b2c2dsa
+
