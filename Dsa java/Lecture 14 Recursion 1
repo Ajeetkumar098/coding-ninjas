@@ -1,0 +1,232 @@
+***************************************************************Recursion_1************************************************
+***************************************************************************************************************************
+Calculate Power
+***************************************************************************************************************************
+import java.util.Scanner;
+
+public class Solution {
+
+	public static int power(int x, int n) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+		 * Taking input and printing output is handled automatically.
+		 */
+		if(n==0)
+		{
+			return 1;
+		}
+		return x*power(x,n-1);
+	}
+	
+}
+
+***************************************************************************************************************************
+
+output: 2 3
+result: 8
+
+
+***************************************************************************************************************************
+Number of digits
+***************************************************************************************************************************
+public class Solution
+ {
+
+	public static int count(int n)
+	{
+
+		//Write your code here
+		if(n<=0)
+		{
+			return 0;
+		}
+		return 1+count(n/10);
+	}
+ }
+
+***************************************************************************************************************************
+/* output:- 123456
+result :- 6
+
+output:- 023045
+result:- 5
+*/
+
+
+***************************************************************************************************************************
+Print First N natural Number
+***************************************************************************************************************************
+
+public class Solution {
+
+	public static void print(int n)
+	{
+		//Write your code here
+		if(n ==0)
+		{
+			return;
+		}
+		print(n-1);  // Natural Number:- 8 means (1-8till)
+		System.out.print(n+" ");  //print till 8. (1 2 3 4 5 6 7 8 )
+     }
+}
+
+
+***************************************************************************************************************************
+Sum of array
+***************************************************************************************************************************
+public class Solution
+ {
+	static int suma(int arr[], int si)
+	{
+		if (si == arr.length-1)
+		{
+			return arr[si];
+		}
+		return arr[si]+suma(arr, si+1);
+	}
+	public static int sum(int input[]) {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		return suma(input,0);
+	}
+}
+
+***************************************************************************************************************************
+output:: 4
+12 5 2 1
+Result: 20
+
+
+***************************************************************************************************************************
+Check Number in array
+***************************************************************************************************************************
+
+ public class Solution 
+{ 
+	
+	static boolean check(int arr[], int x, int p)
+	{
+		int z=arr.length;
+
+		if(arr[p] == x)
+		{
+			return true;
+		}
+		else if (p >=z-1)
+		{
+			return false;
+		}
+		return check(arr, x, p+1);
+	}
+	
+	public static boolean checkNumber(int input[], int x) 
+	{
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		return check(input, x,0);
+	}
+}
+
+***************************************************************************************************************************
+/* Line 1 : An Integer N i.e. size of array
+Line 2 : N integers which are elements of the array, separated by spaces
+Line 3 : Integer x*/
+/* N size of array:- 5,,, given input:- 12 15 2 4 65
+result:- 2  as  your output is :- true (ie means check array indexing */
+
+
+***************************************************************************************************************************
+First Index Of a Number in an Array - Question
+***************************************************************************************************************************
+/***********First Index of a Number in an array-question******/
+public class Solution
+ {     
+	 	static int res(int arr[], int x, int index)
+		  {
+			  	int l = arr.length;
+			if (arr[index] == x)
+			 {
+				return index;   // result true then result 1
+			}
+			if (index == l - 1)
+			 {
+				return -1;  // result false then result -1
+			}
+			return res(arr, x, index + 1);
+		}
+
+	public static int firstIndex(int input[], int x)
+	 {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		return res(input,x,0);
+	}
+	
+}
+***************************************************************************************************************************
+/* result:-
+ N:- size of array=4
+ given:-12 15 42 25
+ finding element 42
+ result:- as idenxing of array in 42 as a[2]
+ count on starting to ending as indexing */
+
+***************************************************************************************************************************
+Last Index Of a Number in an Array 
+***************************************************************************************************************************
+/**************Last Index Of a Number in an Array - Question **********/
+public class Solution
+ {  
+		
+	 	static int last(int arr[], int x, int l) 
+		 {
+			 
+			if (arr[l] == x)  // l as last indexing assume x as value
+		   {
+				return l;
+			}
+			if (l == 0)
+			 {
+				return -1;
+			}
+			return last(arr, x, l - 1);
+		}
+	public static int lastIndex(int arr[], int x)
+	 {
+		/* Your class should be named Solution
+		 * Don't write main().
+		 * Don't read input, it is passed as function argument.
+		 * Return output and don't print it.
+	 	 * Taking input and printing output is handled automatically.
+		*/
+		
+		return last(arr, x,arr.length - 1);
+	}
+	
+}
+
+***************************************************************************************************************************
+/*
+ * result : to show result in last index of array
+ *Index size:-  5
+ * given array:- 12 15 42 2 15
+ * given output:- 15
+ indexing of array is 4 a[4] means denotes in indexing last
+ */
+*************************************************************************************************************************** 
+ 

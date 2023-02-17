@@ -1,0 +1,509 @@
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+Length of linked list
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+
+/*
+
+ 	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+		T data;
+		LinkedListNode<T> next;
+
+		public Node(T data) {
+			this.data = data;
+		}
+	}
+
+*/
+
+
+public class Solution {
+
+	public static int length(LinkedListNode<Integer> head){
+		//Your code goes here
+		int r = 0;
+		while(head!=null){
+			r++;
+			head = head.next;
+		}
+		return r;
+	}
+	}
+
+	/*
+	 * Output:
+	 * 
+	 * 1 // Test case
+	 * 12 -23 12 23 0 6 -1 // given node
+	 result:- 6 // -ve sign is not includedin one time
+	 */
+   
+   
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+   
+Print ith Node
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+/*
+
+ 	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+		T data;
+		LinkedListNode<T> next;
+
+		public Node(T data) {
+			this.data = data;
+		}
+	}
+
+*/
+
+public class Solution
+ {
+
+	public static void printIthNode(LinkedListNode<Integer> head, int i)
+	{
+		//Your code goes here
+		int n = 0;
+		while(head!=null){
+			if(n == i){
+				System.out.print(head.data);
+			}
+			n++;
+			head = head.next;
+
+	}
+	}
+ }
+ 	/*
+	 * Output:
+	 * 1 // Test case
+	 * 3 4 5 2 6 1 9 -1 // given node in linked list
+	 * 3 // 3indexing which element???
+	 * 
+	 * Result:- 2 because indexing starting is index 0
+	 * 
+	 * 
+	 */
+   
+   
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$   
+   
+Insert Node in Linked list
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static LinkedListNode<Integer> insert(LinkedListNode<Integer> head, int pos, int data){
+		//Your code goes here
+		if (pos == 0){
+			LinkedListNode t = new LinkedListNode(data);
+			LinkedListNode tem = head;
+			head = t;
+			head.next = tem;
+			return head;
+		}
+		int x = 0;
+		LinkedListNode temp = head;
+		while(temp!= null){
+			if (x+1 == pos){
+				LinkedListNode t = new LinkedListNode(data);
+				LinkedListNode tem = temp.next;
+				temp.next = t;
+				temp.next.next = tem;
+				x++;
+			}
+			x++;
+			temp = temp.next;
+		}
+		return head;
+	}
+	}
+
+	/*
+	 * Ouput:
+	 * 1 // Test Case
+	 * 3 6 41 12 4 63 26 32 -1 // given node
+	 * 0 1 //  indexing 0 , to insert 1
+
+	 Result:- 1 3 6 41 12 4 63 26 32
+	 */
+   
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+Delete Node in LInked List
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+
+/****************************************************************
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*****************************************************************/
+
+public class Solution {
+	public static LinkedListNode<Integer> deleteNode(LinkedListNode<Integer> head, int pos) {
+		// Write your code here.
+	if (head == null){
+			return head;
+		}
+		if (pos == 0 ){
+			return head.next;
+		}
+		int p = 0;
+		LinkedListNode f = head;
+		while(f.next!=null){
+			p++;
+			f= f.next;
+		}
+		if(pos>p){
+			return head;
+		}
+		LinkedListNode t = head;
+		int s = 0;
+		while(s<pos-1){
+			s++;
+			t = t.next;
+		}
+		LinkedListNode n = t;
+		t.next = t.next.next;
+		t = n;
+		return head;
+	}
+	}
+
+/*
+ * Output:
+ * 1 //Test case
+ * 3 4 5 2 6 1 9 -1 //given node
+ * 3 // indexing 3
+ REsult:- 3 4 5 6 1 9 // 2 is removing because indexing 3 is given element is 2
+ */
+ 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  
+ 
+                                      Assignment
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+Find a Node in Linked List
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+/****************************************************************
+
+	Following is the class structure of the Node class:
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*****************************************************************/
+
+public class Solution
+ {
+	public static int findNode(LinkedListNode<Integer> head, int n)
+	 {
+		// Write your code here.
+		int p = 0;
+		while (head != null) {
+			if (head.data == n) {
+				return p;
+			}
+			p++;
+			head = head.next;
+		}
+		return -1;
+	}
+}
+
+/*
+ * output:
+ 2 // Test Case 2 means two linked list 
+ * 1 6 // first given node
+ * 2 //ask element to node
+ * 3 4 5 2 6 1 9 -1 // second given node
+ * 6 // ask element to node
+
+
+ Result:- -1 means indexing 2 is not value present in linked list
+ Result:- 6 as indexing 4.
+ */
+ 
+ 
+ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+ 
+ AppendLastNToFirst
+ 
+ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+ 
+ 
+ /*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static LinkedListNode<Integer> appendLastNToFirst(LinkedListNode<Integer> head, int n) {
+		//Your code goes here
+
+		LinkedListNode<Integer> node=head,checkNode=null,newHead=null;
+        if (n==0)
+        {
+            return head;
+        }
+
+        int count=0;
+        while(node!=null)
+        {
+            node=node.next;
+            count=count+1;
+        }
+        if (count<n)
+        {
+            return head;
+        }
+         n=count-n;
+        node=head;
+        for (int i=0;i<n-1;i++)
+        {
+            node=node.next;
+        }
+        checkNode=node.next;
+        node.next=null;
+        newHead=checkNode;
+
+        while(checkNode.next!=null)
+        {
+            checkNode=checkNode.next;
+        }
+        checkNode.next=head;
+        head=newHead;
+        return head;
+	}
+}
+/*
+ * output:
+ * 2 // Test Case 2 means given two linked list
+ * 1 2 3 4 5 -1 // first given linked list
+ * 3 // indexing 3 means last-->> to first count
+ * 10 20 30 40 50 60 -1 // 2nd given linked list
+ * 5 // last---> first count indexing 5
+
+ Result:
+ 3 4 5 1 2 // starting 3-- to after print this circle round
+ 20 30 40 50 60 10 // starting indexing 5 --- to after print this circle round
+ */
+
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+Eliminates duplicates form Linked list
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static LinkedListNode<Integer> removeDuplicates(LinkedListNode<Integer> head) {
+		//Your code goes here
+		if(head ==null){
+			return head;
+		}
+		if(head.next == null){
+			return head;
+		}
+		LinkedListNode temp = head;
+		LinkedListNode temp2 = head.next;
+		while(temp2 != null){
+			if(temp.data.equals(temp2.data)){
+				temp2 = temp2.next;
+			}
+			else{
+				temp.next = temp2;
+				temp = temp2;
+			}
+		}
+		temp.next = null;
+		return head;
+	}
+
+}
+/*
+ * Output:
+ 1// Test case
+ * 1 2 3 3 3 3 4 4 4 5 5 7 -1//given node 
+ Result:- 1 2 3 4 5 7 // -1 is not printin because single list indicating end of linked list.
+ */
+ 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+Print Reverse Linked LIst
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+
+public class Solution {
+
+	public static void printReverse(LinkedListNode<Integer> root) {
+		//Your code goes here
+		 LinkedListNode<Integer> smallOutput=printReverseRecursion(root);
+	}
+    
+    public static LinkedListNode<Integer> printReverseRecursion(LinkedListNode<Integer> node)
+    {
+        if (node==null)
+            return node;
+        LinkedListNode<Integer> smallOutput=printReverseRecursion(node.next);
+        System.out.print(node.data+" ");
+        return smallOutput;
+    }
+	}
+/*
+ * Output:
+ * 
+ * 1 // Test case
+ * 12 45 2 5 // given node in linked list
+
+ OUtput:
+ 5 2 45 12 // Reverse linked list
+ */
+ 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+Polindrome linked list
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ 
+
+
+
+/*
+
+	Following is the Node class already written for the Linked List
+
+	class LinkedListNode<T> {
+    	T data;
+    	LinkedListNode<T> next;
+    
+    	public LinkedListNode(T data) {
+        	this.data = data;
+    	}
+	}
+
+*/
+import java.util.*;
+public class Solution {
+
+	public static boolean isPalindrome(LinkedListNode<Integer> head) 
+	{
+		//Your code goes here
+		LinkedListNode<Integer> node=head;
+        ArrayList<Integer> arr = new ArrayList<>();
+        while (node!=null)
+        {
+            arr.add(node.data);
+            node=node.next;
+        }
+        int start=0, end=arr.size()-1;
+        while(start<end)
+        {
+            if (arr.get(start)!=arr.get(end))
+            {
+                return false;
+            }
+            else
+            {
+                start=start+1;
+                end=end-1;
+            }
+        }
+        return true;
+	}
+
+}
+
+/*
+ * Output:
+ * 1
+ * 9 2 3 3 2 9 -1
+
+
+ Result:- true
+ */

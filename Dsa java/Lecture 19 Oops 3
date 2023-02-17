@@ -1,0 +1,10 @@
+Which of the following is  true?
+
+Ans:- 
+An interface can extend another interface.
+A non-abstract class which is implementing an interface must implement all the methods of the interface.
+
+An interface is a solution for multiple inheritance in java.
+
+
+&*********************No coding of this chapter**************************$

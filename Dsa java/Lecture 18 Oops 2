@@ -1,0 +1,23 @@
+Property of class
+
+Which variable(s) can the class person access in the following code?
+class person{
+    String name;
+    int weight;
+}
+class Student extends person{
+    int roll_number;
+    String school_naname 
+weight 
+roll_number
+school_nameme;
+}
+
+Result:- 
+
+name 
+weight 
+roll_number
+school_name
+
+&*******************No coding this chapter***********************
