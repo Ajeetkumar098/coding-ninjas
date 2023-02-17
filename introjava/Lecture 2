@@ -1,0 +1,37 @@
+/*.........Predict output...............*/
+What is the output of the following code if the input is : 5 10 ?
+Scanner s = new Scanner(System.in);
+int a = s.nextInt();
+int b = s.nextInt();
+System.out.println(a+b);
+
+Ans:-  15
+(because int a=5 and int b=10) 
+(a+b=15)
+
+
+
+/* Average Marks assignment */
+
+import java.util.Scanner;
+
+public class Solution {
+
+
+	public static void main(String[] args) {
+	
+			int m1,m2,m3,A;
+		Scanner s = new Scanner(System.in);
+		String str= s.next();
+		char ch=str.charAt(0);
+		System.out.println(ch);
+			m1= s.nextInt();  // Marks M1
+			m2=s.nextInt();   // Marks M2
+	     	m3=s.nextInt();   // Marks M3
+		     A= (m1+m2+m3)/3;
+		System.out.print(A);
+		
+	}
+
+}
+
