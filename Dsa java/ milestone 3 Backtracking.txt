@@ -1,0 +1,205 @@
+************************************************************************************************************************************************************************
+   N Queens
+***********************************************************************************************************************************************************************
+
+public class Solution {
+	
+		
+public static void placeNQueens(int n){
+		
+	/* Your class should be named Solution.
+	 * Don't write main() function.
+	 * Don't read input, it is passed as function argument.
+	 * Print output as specified in the question
+	 */
+	int[][] board = new int[n][n];
+    solveNQueens(board, 0,n); 
+
+	}
+    
+    static void solveNQueens(int board[][], int row, int N) 
+	{ 
+    /* base case: If all queens are placed 
+    then return true */
+    if (row == N) 
+    { 
+        printSolution(board,N); 
+        return;
+    } 
+ 
+    /* Consider this column and try placing 
+    this queen in all rows one by one */
+    for (int i = 0; i < N; i++) 
+    { 
+        /* Check if queen can be placed on 
+        board[row][i] */
+        if ( isSafe(board, row, i, N) ) 
+        { 
+            /* Place this queen in board[row][i] */
+            board[row][i] = 1; 
+ 
+            // Make result true if any placement 
+            // is possible 
+            solveNQueens(board, row + 1, N); 
+ 
+            /* If placing queen in board[row][i] 
+            doesn't lead to a solution, then backtrack and
+            remove queen from board[row][i] */
+            board[row][i] = 0; 
+        } 
+    } 
+
+	}
+    
+    static boolean isSafe(int board[][], int row, int col, int N) 
+	{ 
+    int i, j; 
+        
+    //Check if all values in the given column and rows from 0 to row-1 are 0
+    for (i=0;i<row;i++)
+    {
+        if (board[i][col]==1)
+            return false;
+    }
+        
+	// Check upper diagonal on left side
+    for (i = row, j = col; i >= 0 && j >= 0; i--, j--) 
+        if (board[i][j] == 1) 
+            return false;
+        
+	//Check upper right diagonal
+    for (i=row,j=col;i>=0 && j<N;i--,j++)
+        if (board[i][j] == 1) 
+            return false;
+ 
+    return true; 
+	} 
+    
+    static void printSolution(int board[][], int N) 
+	{ 
+    for (int i = 0; i < N; i++) 
+    { 
+        for (int j = 0; j < N; j++) 
+            System.out.print(board[i][j]+" ");  
+    } 
+    System.out.println(); 
+	} 
+}
+
+********************************************************************************************************************************************************************
+     Rat In A Maze
+******************************************************************************************************************************************************************8
+
+public class Solution {
+    
+	public static boolean ratInAMaze(int maze[][]){
+
+		/*Your class should be named Solution. 
+		*Don't write main().
+	 	*Don't take input, it is passed as function argument.
+	 	*Don't print output.
+	 	*Taking input and printing output is handled automatically.
+		*/ 
+		int path[][] = new int[maze.length][maze.length];
+		return solveMaze(maze,0,0,path);
+	}
+    
+    public static boolean solveMaze(int[][] maze, int i, int j, int[][] path)
+	{
+		//Check if i,j are valid pair of indices => i,j>=0
+		int n=maze.length;
+		if (i<0 || j<0 || i>=n || j>=n)
+			return false;
+		
+		//If cell is already part of the path
+		if (path[i][j]==1)
+			return false;
+		
+		//If cell is blocked in maze (cell value=0)
+		if (maze[i][j]==0)
+			return false;
+		
+		//If all previous conditions fail, then the cell is a possible path
+		//Include the cell in current path
+		path[i][j]=1;
+		
+		//If we have reached ending point 
+		if (i==n-1 && j==n-1)
+			return true;
+		
+		//Now, explore in all directions
+		// Direction 1 - move towards cell above (top direction)
+		if (solveMaze(maze,i-1,j,path))
+			return true;
+		
+		//Direction 2 - move towards cell to the right (right direction)
+		if (solveMaze(maze,i,j+1,path))
+			return true;
+		
+		//Direction 3 - move towards cell below (bottom direction)
+		if (solveMaze(maze,i+1,j,path))
+			return true;
+		
+		//Direction 3 - move towards cell to the left (left direction)
+		if (solveMaze(maze,i,j-1,path))
+			return true;
+		
+		//If none of the conditions are satisfied, then the path is not working out
+		return false;
+	}
+}
+
+*******************************************************************************************************************************************************************
+     Rat In a Maze All Paths
+*********************************************************************************************************************************************************************
+
+import java.io.*;
+import java.util.*;
+public class Solution {
+
+    static void printsolution(int [][] solution, int n) {
+        for (int i = 0; i < n; i++ ){
+            for(int j = 0; j < n; j++ ){
+                System.out.print(solution[i][j] + " ");
+            }
+        }
+    }
+
+
+     static void solveMaze(int maze[][], int solution[][],  int x, int y , int n) {
+       
+        if (x == n - 1 && y == n-1){
+            solution[x][y] = 1;
+            printsolution(solution, n);
+            System.out.println();
+            return;
+        }
+        if (x >  n - 1 || x < 0 || y > n-1 || y < 0)
+        {
+            return;
+        }
+        if (x > n-1 || x < 0 || y > n-1 || y < 0 || maze[x][y] == 0 || solution[x][y] == 1){
+            return;
+        }
+        solution[x][y] = 1;
+        solveMaze(maze, solution, x-1 , y, n);
+        solveMaze(maze, solution, x + 1 , y, n);
+        solveMaze(maze, solution, x , y - 1, n);
+        solveMaze(maze, solution, x , y + 1, n);
+        solution[x][y] = 0;
+     }
+     static void ratInAMaze(int maze[][], int n)
+     {
+         int[][] solution = new int [20][20];
+         for (int i = 0; i < n; i++){
+             for (int j = 0; j < n ; j++)
+             {
+                 solution[i][j] = 0;
+             }
+         }
+         solveMaze(maze, solution, 0, 0, n);
+     }
+}
+
+
+

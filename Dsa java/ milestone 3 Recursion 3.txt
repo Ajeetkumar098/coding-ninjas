@@ -1,0 +1,363 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@Ajeetkumar098 
+Ankitv1998
+/
+Dsa_Java_Milestone_2
+Public
+Fork your own copy of Ankitv1998/Dsa_Java_Milestone_2
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Dsa_Java_Milestone_2/Recursion-3
+@Ankitv1998
+Ankitv1998 Create Recursion-3
+Latest commit f482fc5 3 days ago
+ History
+ 1 contributor
+319 lines (281 sloc)  9.62 KB
+
+***********************************************************************************************************************************
+Return Keypad Code
+***********************************************************************************************************************************
+public class solution {
+
+	// Return a string array that contains all the possible strings
+	public static String[] keypad(int n) {
+		if (n == 0 || n == 1) {
+			String[] empty = { "" };
+			return empty;
+		}
+		String[] smallOutput = keypad(n / 10);
+		String[] options = getOptions(n % 10);
+		String[] output = new String[smallOutput.length * options.length];
+		int k = 0;
+		for (int i = 0; i < smallOutput.length; i++) {
+			for (int j = 0; j < options.length; j++) {
+				output[k++] = smallOutput[i] + options[j];
+			}
+		}
+		return output;
+	}
+
+private static String[] getOptions(int n) {
+    switch (n) {
+        case 2:
+            String[] a = {"a", "b", "c"};
+            return a;
+        case 3:
+            String[] b = {"d", "e", "f"};
+            return b;
+        case 4:
+            String[] c = {"g", "h", "i"};
+            return c;
+        case 5:
+            String[] d = {"j", "k", "l"};
+            return d;
+        case 6:
+            String[] e = {"m", "n", "o"};
+            return e;
+        case 7:
+            String[] f = {"p", "q", "r", "s"};
+            return f;
+        case 8:
+            String[] g = {"t", "u", "v"};
+            return g;
+        case 9:
+            String[] h = {"w", "x", "y", "z"};
+            return h;
+        default:
+            String[] empty = { "" };
+            return empty;
+    }
+}
+
+}
+
+
+***********************************************************************************************************************************
+Print Keypad Combinations Code
+***********************************************************************************************************************************
+
+public class solution {
+
+	public static void printKeypad(int input) {
+		printKeypadHelper(input, "");
+	}
+
+	private static void printKeypadHelper(int input, String outputSoFar) {
+		if (input == 0) {
+			System.out.println(outputSoFar);
+			return;
+		}
+
+		int lastDigit = input % 10;
+		String[] options = getOptions(lastDigit);
+		for (int i = 0; i < options.length; i++) {
+			printKeypadHelper(input / 10, options[i] + outputSoFar);
+		}
+	}
+
+private static String[] getOptions(int n) {
+    switch (n) {
+        case 2:
+            String[] a = {"a", "b", "c"};
+            return a;
+        case 3:
+            String[] b = {"d", "e", "f"};
+            return b;
+        case 4:
+            String[] c = {"g", "h", "i"};
+            return c;
+        case 5:
+            String[] d = {"j", "k", "l"};
+            return d;
+        case 6:
+            String[] e = {"m", "n", "o"};
+            return e;
+        case 7:
+            String[] f = {"p", "q", "r", "s"};
+            return f;
+        case 8:
+            String[] g = {"t", "u", "v"};
+            return g;
+        case 9:
+            String[] h = {"w", "x", "y", "z"};
+            return h;
+        default:
+            String[] empty = { "" };
+            return empty;
+    }
+}
+}
+
+***********************************************************************************************************************************
+***********************************************************************************************************************************
+Assignment
+***********************************************************************************************************************************
+Return subsets sum to K
+***********************************************************************************************************************************
+***********************************************************************************************************************************
+import java.util.ArrayList;
+
+
+public class solution {
+
+	public static void subsetsSumK(int[] input, int index, int sum, String set, int tar, ArrayList<Integer> arrayList) {
+		if (sum > tar)
+			return;
+		if (index == input.length) {
+			if (sum == tar) {
+				for (String s : set.split(" ")) {
+					arrayList.add(Integer.parseInt(s));
+				}
+				arrayList.add(null);
+			}
+			return;
+		}
+		subsetsSumK(input, index + 1, sum + input[index], set + input[index] + " ", tar, arrayList);
+		subsetsSumK(input, index + 1, sum, set, tar, arrayList);
+	}
+
+	public static int[][] subsetsSumK(int[] input, int k) {
+		ArrayList<Integer> arrayList = new ArrayList<>();
+		subsetsSumK(input, 0, 0, "", k, arrayList);
+		int row = 0;
+		for (Integer i : arrayList)
+			if (i == null)
+				row++;
+		int[][] mainArray = new int[row][];
+		int col = 0;
+		row = 0;
+		for (Integer i : arrayList) {
+			if (i == null) {
+				mainArray[row] = new int[col];
+				row++;
+				col = 0;
+			} else
+				col++;
+		}
+		int index = 0;
+		for (int i = 0; i < mainArray.length; i++) {
+			for (int j = 0; j < mainArray[i].length; j++) {
+				mainArray[i][j] = arrayList.get(index++);
+			}
+			index++;
+		}
+		return mainArray;
+	}
+}
+
+***********************************************************************************************************************************
+Return subset of an array
+***********************************************************************************************************************************
+
+public class solution {
+    
+    public static int[][] subsets(int input[]) {
+        int n = input.length;
+        int totalSubsets = (int)Math.pow(2, n);
+        int[][] output = new int[totalSubsets][];
+        for(int i = 0; i < totalSubsets; i++) {
+            int subsetSize = 0;
+            for(int j = 0; j < n; j++) {
+                if((i & (1 << j)) != 0) {
+                    subsetSize++;
+                }
+            }
+            output[i] = new int[subsetSize];
+            int index = 0;
+            for(int j = 0; j < n; j++) {
+                if((i & (1 << j)) != 0) {
+                    output[i][index++] = input[j];
+                }
+            }
+        }
+        return output;
+    }
+}
+
+***********************************************************************************************************************************
+Return Permutations of a String
+***********************************************************************************************************************************
+
+import java.util.ArrayList;
+
+public class solution {
+
+	public static String[] permutationOfString(String input) {
+		if (input == null || input.length() == 0) {
+			return new String[0];
+		}
+		ArrayList<String> result = new ArrayList<String>();
+		permutationHelper(input.toCharArray(), 0, result);
+		return result.toArray(new String[result.size()]);
+	}
+
+	private static void permutationHelper(char[] input, int start, ArrayList<String> result) {
+		if (start == input.length) {
+			result.add(new String(input));
+			return;
+		}
+
+		for (int i = start; i < input.length; i++) {
+			swap(input, start, i);
+			permutationHelper(input, start + 1, result);
+			swap(input, start, i);
+		}
+	}
+
+	private static void swap(char[] input, int i, int j) {
+		char temp = input[i];
+		input[i] = input[j];
+		input[j] = temp;
+	}
+}
+
+***********************************************************************************************************************************
+Print Subsets of Array
+***********************************************************************************************************************************
+
+public class solution {
+	public static void printSubsets(int input[]) {
+		int n = input.length;
+		for (int i = 0; i < (1 << n); i++) {
+			for (int j = 0; j < n; j++) {
+				if ((i & (1 << j)) > 0) {
+					System.out.print(input[j] + " ");
+				}
+			}
+			System.out.println();
+		}
+	}
+}
+
+
+***********************************************************************************************************************************
+Print Subset Sum to K
+***********************************************************************************************************************************
+
+public class solution {
+    public static void printSubsetsSumTok(int input[], int k) {
+        if (input == null || input.length == 0) {
+            return;
+        }
+        int[] subset = new int[input.length];
+        printSubsetsSumTokHelper(input, 0, subset, 0, k);
+    }
+
+    private static void printSubsetsSumTokHelper(int[] input, int start, int[] subset, int subsetSize, int k) {
+        if (start == input.length) {
+            int sum = 0;
+            for (int i = 0; i < subsetSize; i++) {
+                sum += subset[i];
+            }
+            if (sum == k) {
+                for (int i = 0; i < subsetSize; i++) {
+                    System.out.print(subset[i] + " ");
+                }
+                System.out.println();
+            }
+            return;
+        }
+        subset[subsetSize] = input[start];
+        printSubsetsSumTokHelper(input, start + 1, subset, subsetSize + 1, k);
+        printSubsetsSumTokHelper(input, start + 1, subset, subsetSize, k);
+    }
+}
+
+***********************************************************************************************************************************
+Print Permutations of a String
+***********************************************************************************************************************************
+public class solution {
+	public static void permutations(String input) {
+		permutationsHelper(input.toCharArray(), 0);
+	}
+
+	private static void permutationsHelper(char[] chars, int index) {
+		if (index == chars.length) {
+			System.out.println(new String(chars));
+			return;
+		}
+
+		for (int i = index; i < chars.length; i++) {
+			swap(chars, index, i);
+			permutationsHelper(chars, index + 1);
+			swap(chars, index, i);
+		}
+	}
+
+	private static void swap(char[] chars, int i, int j) {
+		char temp = chars[i];
+		chars[i] = chars[j];
+		chars[j] = temp;
+	}
+}
+
+
+
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Dsa_Java_Milestone_2/Recursion-3 at main · Ankitv1998/Dsa_Java_Milestone_2
