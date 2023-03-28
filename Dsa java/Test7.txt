@@ -1,0 +1,249 @@
+********************************************************************************************************************************************************************
+     Bob and his string
+*********************************************************************************************************************************************************************
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+
+	
+	public static void main(String[] args) {
+		/* Your class should be named Main.
+ 			* Read input as specified in the question.
+ 			* Print output as specified in the question.
+		*/
+
+		// Write your code here
+		Scanner s = new Scanner(System.in);
+		int t = s.nextInt();
+		for(int j=0 ; j<t ; j++){
+			String str = s.next();
+			HashMap<Character, Integer> map = new HashMap<>();
+			int max = -1;
+			for(int i = 0 ; i<str.length() ; i++){
+				if(map.containsKey(str.charAt(i))){
+					int sp = map.get(str.charAt(i));
+					int items = i - sp -1;
+					if(items > max){
+						max = items;
+					}
+				}
+				else{
+					map.put(str.charAt(i), i);
+				}
+			}
+			System.out.println(max);
+		}
+
+	}
+
+}
+
+**********************************************************************************************************************************************************888************888
+   Help Aroma
+****************************************************************************************************************************************************************
+
+import java.util.*;
+
+public class Main {
+    public static void isPossibleToRearrange(String M, List<List<Integer>> queries) {
+        int n = M.length();
+        int[][] freq = new int[n][26];
+        for (int i = 0; i < n; i++) {
+            char c = M.charAt(i);
+            for (int j = 0; j < 26; j++) {
+                freq[i][j] = (i == 0 ? 0 : freq[i - 1][j]) + (c - 'a' == j ? 1 : 0);
+            }
+        }
+        for (List<Integer> query : queries) {
+            int W = query.get(0);
+            int X = query.get(1);
+            int Y = query.get(2);
+            int Z = query.get(3);
+            int[] freqP = new int[26];
+            int[] freqQ = new int[26];
+            for (int i = 0; i < 26; i++) {
+                freqP[i] = freq[X - 1][i] - (W == 1 ? 0 : freq[W - 2][i]);
+                freqQ[i] = freq[Z - 1][i] - (Y == 1 ? 0 : freq[Y - 2][i]);
+            }
+            if (Arrays.equals(freqP, freqQ)) {
+                System.out.println("true");
+            } else {
+                System.out.println("false");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String M = scanner.nextLine();
+        int K = scanner.nextInt();
+        List<List<Integer>> queries = new ArrayList<List<Integer>>();
+        for (int i = 0; i < K; i++) {
+            List<Integer> query = new ArrayList<Integer>();
+            for (int j = 0; j < 4; j++) {
+                query.add(scanner.nextInt());
+            }
+            queries.add(query);
+        }
+        isPossibleToRearrange(M, queries);
+    }
+}
+
+*********************************************************************************************************************************************************************
+   Maximum Invitations.
+*********************************************************************************************************************************************************************
+
+import java.util.*;
+
+public class Main {
+    static int peri(int w, int h) {
+        return w * 2 + h * 2;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        sc.nextLine();
+        char[][] arr = new char[n][m];
+        int[] cnt = new int[m];
+        int max = 0;
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextLine().toCharArray();
+            for (int j = 0; j < m; j++) {
+                if (arr[i][j] == '.')
+                    cnt[j]++;
+                else
+                    cnt[j] = 0;
+            }
+            for (int j = 0; j < m; j++) {
+                int h = cnt[j];
+                int w = 1;
+                if (h > 0) {
+                    for (int k = j + 1; k < m; k++) {
+                        if (cnt[k] < h)
+                            break;
+                        w++;
+                    }
+                    for (int k = j - 1; k > 0; k--) {
+                        if (cnt[k] < h)
+                            break;
+                        w++;
+                    }
+                }
+                max = Math.max(max, peri(w, h));
+            }
+        }
+        System.out.println(max - 1);
+    }
+}
+
+********************************************************************************************************************************************************************
+   Strange island.
+********************************************************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static String[] map;
+	public static char[][] newMap = new char[12][12];
+	public static int[] u = {0, 0, 1, -1};
+	public static int[] v = {1, -1, 0, 0};
+	
+	public static void main(String[] args) {
+		/* Your class should be named Main.
+ 			* Read input as specified in the question.
+ 			* Print output as specified in the question.
+		*/
+
+		// Write your code here
+		Scanner s = new Scanner(System.in);
+		int r = s.nextInt();
+		int c = s.nextInt();
+
+		map = new String[r];
+		int mini =100;
+		int maxi = 0;
+		int minj = 100;
+		int maxj = 0;
+
+		for(int i=0 ; i<r ;i++){
+			map[i] = s.next();
+			// System.out.println(map[i]);
+		} 
+		for(int i=0; i<r; ++i){
+			for(int j=0 ; j<c; ++j){
+				int more = 0;
+				for(int k=0; k<4 ;++k){
+					int x=i+u[k];
+					int y=j+v[k];
+
+					if(x<0 || y<0 || x>=r || y>=c || map[x].charAt(y)=='.'){
+						more++;
+					}
+				}
+				if(more>=3){
+					newMap[i][j] = '.';
+				}
+				else{
+					newMap[i][j] = map[i].charAt(j);
+				}
+				if(newMap[i][j] == 'X'){
+					mini = Math.min(mini, i);
+					maxi = Math.max(maxi, i);
+					minj = Math.min(minj, j);
+					maxj = Math.max(maxj, j);
+				}
+			}
+		}
+
+		for(int i =mini; i<=maxi; ++i){
+			for(int j=minj; j<=maxj; ++j){
+				System.out.print(newMap[i][j]);
+			}
+			System.out.println();
+		}
+
+
+
+	}
+
+}
+
+****************************************************************************************************************************************************************88888
+   Team Selection
+******************************************************************************************************************************************************************8888
+
+import java.util.Scanner;
+
+public class Main {
+
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        sc.close();
+        printCombinations(arr, 12, "", 0);
+    }
+
+    public static void printCombinations(int[] arr, int k, String output, int index) {
+        if(k == 0) {
+            System.out.println(output);
+            return;
+        }
+        if(index == arr.length) {
+            return;
+        }
+        printCombinations(arr, k-1, output+arr[index]+" ", index+1);
+        printCombinations(arr, k, output, index+1);
+    }
+
+}
