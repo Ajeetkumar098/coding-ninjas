@@ -1,0 +1,131 @@
+**********************************************************************************************************************************************************************
+   Maximum_Profit_on_App.
+********************************************************************************************************************************************************************
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Maximum_Profit_on_App {
+	public static int maximumProfit(int budget[]) {
+		Arrays.sort(budget);
+		int ans=Integer.MIN_VALUE;
+		int n=budget.length;
+		for(int i=0;i<n;i++)
+		{
+			ans=Math.max(ans,budget[i]*(n-i));
+//			 System.out.println(budget[i] + " "+(n-i)+" "+ans);
+		}
+		return ans;
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int input[] = new int[n];
+		for(int i=0;i<n;i++)
+			input[i] = s.nextInt();
+		System.out.println(maximumProfit(input));
+	}
+}
+
+********************************************************************************************************************************************************************
+   Minimum_Count.
+*************************************************************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Minimum_Count {
+	public static int minCount(int n) {
+		if(n<=1) {
+			return n;
+		}
+		int ans =n;
+		for(int i=1;i<=n;i++) {
+			int sq = i*i;
+			if(sq>n) {
+				break;
+			}
+			ans = Math.min(ans, minCount(n-sq)+1);
+		}
+		return ans;
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int num = s.nextInt();
+		System.out.println(minCount(num));
+	}
+}
+
+******************************************************************************************************************************************************************8888
+    Print_2D_Array
+********************************************************************************************************************************************************************
+
+import java.util.Scanner;
+
+public class Print_2D_Array {
+	public static void print2DArray(int input[][]) {
+		// Write your code here
+		for(int i = 0; i<input.length; i++){
+            for(int j = i; j<input.length; j++){
+                for(int k = 0; k<input[0].length; k++){
+                    System.out.print(input[i][k]+" ");
+                }
+                System.out.println();
+            }
+        }
+	}
+	static Scanner s = new Scanner(System.in);
+	public static int[][] takeInput(){
+		int numRows = s.nextInt();
+		int numCols = s.nextInt();
+		int[][] input = new int[numRows][numCols];
+		for(int i = 0; i < numRows; i++){
+			for(int j = 0; j < numCols; j++){
+				input[i][j] = s.nextInt();
+			}
+		}
+		return input;
+	}
+	public static void main(String[] args) {
+		int[][] input = takeInput();
+		print2DArray(input);
+	}
+}
+
+*******************************************************************************************************************************************************************
+    Split_Array
+*********************************************************************************************************************************************************************
+
+
+import java.util.Scanner;
+
+public class Split_Array {
+	private static boolean splitArray(int input[] ,int si,int lsum ,int rsum){
+        if(input.length == si){
+           return  lsum==rsum;
+        }
+        if(input[si] % 3 == 0){
+           lsum += input[si];
+        }
+        else if(input[si] % 5 == 0){
+           rsum += input[si];
+        }
+        else{
+           return splitArray(input,si+1,lsum+input[si],rsum) || splitArray(input,si+1,lsum,rsum+input[si]) ;
+        }
+        return splitArray(input,si+1,lsum,rsum) ;            
+    }
+	public static boolean splitArray(int input[]) {
+		return splitArray(input, 0, 0, 0);
+	}
+	static Scanner s = new Scanner(System.in);
+	public static void main(String[] args) {
+		int n = s.nextInt();
+		int input[] = new int[n];
+		for(int i = 0; i < n; i++) {
+			input[i] = s.nextInt();
+		}
+		System.out.println(splitArray(input));
+	}
+}
+
+
